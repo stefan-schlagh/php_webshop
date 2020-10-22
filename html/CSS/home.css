@@ -1,0 +1,256 @@
+/*
+main
+*/
+.mainHeader{
+    overflow:auto;
+}
+/*
+    Style für Produkt in home.php
+*/
+.product{
+    position: relative;
+    overflow: auto;
+    width: 90%;
+    height: 30%;
+    border: 3px solid var(--border-grey);
+    border-radius: 5px;
+    margin: 20px 5%;
+}
+.product-image{
+    cursor: pointer;
+    height:20%;
+    width: 20%;
+    margin: 20px;
+    float:left;
+    object-fit: cover;
+}
+.product-text{
+    width:60%;
+    height: 10%;
+    margin: 20px;
+    float:left;
+}
+.product-text .head{
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.product-text .head:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.product-btnDetails{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+.p-rating-link,.modal-rating-link{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #000;
+}
+.p-rating-link:hover,.modal-rating-link:hover{
+    color: #2b377a;
+}
+
+
+/*
+    pagination
+*/
+.pagination{
+    float: right;
+    margin: 20px 5%;
+}
+.pagination button{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    background-color: #65d365;
+}
+.pagination button:hover{
+    opacity: 0.8;
+}
+.resultCount{
+    float: left;
+    margin: 20px 5%;
+}
+.pm-main{
+    overflow: auto;
+}
+.pm-main-left{
+    overflow: auto;
+}
+.pm-main-inner{
+    float: left;
+    width: 50%;
+}
+.pm-main-left img{
+    width: 100%;
+}
+.modal-rating-top{
+    display: block;
+    text-align: left;
+    margin-left: 20px;
+}
+.product-description{
+    padding: 60px 20px;
+}
+.pm-bottom{
+    float: right;
+}
+.modal-cart{
+    padding: 5px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: #fafafa;
+}
+.modal-cart:hover{
+    background-color: #f1f1f1;
+}
+.modal-cart button,.product-btnDetails{
+    background-color: var(--greenM);
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+.modal-cart button:hover,.product-btnDetails:hover{
+    opacity: 0.8;
+}
+.modal-cart input[type="number"]{
+    padding: 2px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    margin: 10px;
+}
+
+.rating-modal-toggle1{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.rating-modal-toggle1:hover{
+    color: #2b377a;
+}
+.review-text{
+    display: block;
+    width:80%;
+    resize: vertical;
+    min-height: 100px;
+    margin: 10px;
+    padding: 5px;
+    
+}
+.review-own .rating{
+    cursor: pointer;
+    margin: 10px;
+}
+.review-own button{
+    background-color: var(--greenM);
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 6px 8px;
+    cursor: pointer;
+    margin-left: 72.5%;
+}
+.msgBox-ro{
+    display: none;
+    background-color: #f17272;
+    color: white;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 2px;
+}
+.review-item{
+    margin: 10px 0px;
+    padding: 15px;
+}
+.review-uname{
+    font-weight: bolder;
+    font-size: large;
+}
+.review-time{
+    font-size: 10pt;
+}
+.review-text1{
+    padding: 5px;
+}
+
+/*filters*/
+.filter{
+    padding: 10px;
+    float: none;
+}
+.filter-top{
+    float: none;
+    margin-left: 5%;
+    font-size: 16pt;
+    padding: 5px;
+}
+.filter-block{
+    width: 90%;
+    float: none;
+    display: inline-block;
+    border: 2px solid var(--border-grey);
+    border-top:none;
+    margin: 0px 5%;
+    padding: 5px;
+}
+.filter-header{
+    width: 100%;
+    float: none;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
+.filter-header::after{
+    content: ":";
+}
+.filter-item{
+    float:left;
+    padding: 2px;
+    background-color: #e6ffe6;
+    color: #464444;
+    border: 2px solid var(--border-grey);
+    border-radius: 2px;
+    margin: 2px;
+    cursor: pointer;
+}
+.filter-item:hover{
+    background-color: var(--greenM);
+    color: #ffffff;
+}
+.filter-item-selected{
+    float:left;
+    padding: 2px;
+    border: none;
+    border-radius: 2px;
+    margin: 2px;
+    background-color: var(--greenM);
+    color: #ffffff;
+    cursor: pointer;
+}
+.filter-item-selected:hover{
+    background-color: var(--greenD);
+}
+.filter-item-num{
+    font-size: 8pt;
+}
+.filter-item .filter-item-close{
+    display: none;
+}
+.filter-item-close{
+    padding: 0px 4px;
+    font-family: arial;
+}
+.filter-item-close:hover{
+    border-radius: 50%;
+    background-color: #888888;
+    opacity: 0.7;
+}
+.checked {
+    color: orange;
+}
