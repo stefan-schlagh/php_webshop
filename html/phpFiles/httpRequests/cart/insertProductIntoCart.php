@@ -1,8 +1,8 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/classes/cart.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/phpFiles/classes/cart.php";
 session_start();
 
-include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
 
 
 $cart = new cart(); 

@@ -14,7 +14,7 @@ if(!isset($_GET["rnr"])){
 
 $rnr = $_GET["rnr"];
 
-include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
 mysqli_set_charset($conn, 'utf8');
 
 /*

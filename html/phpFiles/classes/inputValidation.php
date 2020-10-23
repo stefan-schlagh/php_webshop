@@ -80,7 +80,7 @@ class NewUsernameValidation extends InputValidation{
         /**
          * In der DB wird nachgeschaut, ob Username schon existiert
          */
-        include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
         $sql = "SELECT UID FROM user WHERE Username ='$this->content'
                     UNION SELECT UID FROM notverifieduser WHERE Username = '$this->content'";
         $result = $conn->query($sql);
@@ -124,7 +124,7 @@ class ExistingUsernameValidation extends InputValidation{
         /**
          * In der DB wird nachgeschaut, ob Username schon existiert
          */
-        include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
         $sql = "SELECT UID FROM user WHERE Username ='$this->content'
                     UNION SELECT UID FROM notverifieduser WHERE Username = '$this->content'";
         $result = $conn->query($sql);
@@ -176,7 +176,7 @@ class ExistingEmailValidation extends InputValidation{
         }
     }
     function isRightEmail(){
-        include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
         $sql = "SELECT Email FROM user WHERE username ='".$this->username."';";   
         $result = $conn->query($sql);
         //ist email in Spalte vorhanden?
@@ -258,7 +258,7 @@ class ExistingPasswordValidation extends InputValidation{
         }
     }
     private function isRightPassword(){
-        include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
         $sql = "SELECT Password FROM user WHERE username ='".$this->username."';";   
         //$conn->query("SET @p0 = '".$this->username."'");
         //$result = $conn->query("Call 'selectPassword'(@p0)");

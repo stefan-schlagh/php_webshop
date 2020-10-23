@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/classes/cart.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/phpFiles/classes/cart.php";
 
 header('Content-Type: application/json; charset=ISO-8859-1');
 session_start();

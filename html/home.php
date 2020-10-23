@@ -35,8 +35,8 @@ $conn->query("SET @p0 = '$searchvalue'");
 //$x = $start+1;
 $conn->query("SET @p1 = '$start'");
 $conn->query("SET @p2 = '$siteSize'");
-$conn->query("SET @p3 = ''");//catlist
-$conn->query("SET @p4 = ''");//subcatlist
+$conn->query("SET @p3 = '[]'");//catlist
+$conn->query("SET @p4 = '[]'");//subcatlist
 
 $result = $conn->query("CALL `selectProducts1`(@p0)");
 $resultCount = $result -> num_rows;
@@ -48,7 +48,7 @@ if($start>$resultCount){
     $conn->query("SET @p1 = '0'");
     $start = 0;
 }
-$result = $conn->query("CALL `selectProductLimit`(@p0,@p1,@p2,@p3,@p4)");
+$result = $conn->query("CALL `selectProductLimit`(@p0,@p1,@p2,@p3,@p4)") or die($conn->error);
 
 //Result wird in Array gespeichert
 $products = array();
@@ -60,7 +60,7 @@ $conn->next_result();
 
 //Categorys werden abgefragt
 //$result = $conn->query("SELECT CID, Name,'0' AS 'Anzahl' FROM category");
-$result = $conn->query("CALL `selectCategorys`(@p0,@p3)");
+$result = $conn->query("CALL `selectCategorys`(@p0,@p3)") or die($conn->error);
 $categories = array();
 while($row = $result->fetch_assoc()){
     array_push($categories,$row);

@@ -1,6 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/classes/cart.php";
-include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/phpFiles/classes/cart.php";
+include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php";
 
 header('Content-Type: text/html; charset=ISO-8859-1');
 session_start();

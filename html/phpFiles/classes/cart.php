@@ -71,7 +71,7 @@ class cart{
     }
     private function getUnusedCartItemId(){
         //dbConnection
-        include $_SERVER["DOCUMENT_ROOT"]."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER["DOCUMENT_ROOT"]."/phpFiles/database/dbConnection.php";
         /*
             max ciid wird aus DB selected
         */
@@ -87,7 +87,7 @@ class cart{
         /*
             dbConnection
         */
-        include $_SERVER["DOCUMENT_ROOT"]."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER["DOCUMENT_ROOT"]."/phpFiles/database/dbConnection.php";
         /*
             wenn noch kein Artikel in Cart, nochmal überprüfen wegen max(CID)
         */
@@ -238,7 +238,7 @@ class cart{
     public function setNumArray($numArr){
 
         //dbConnection
-        include $_SERVER["DOCUMENT_ROOT"]."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER["DOCUMENT_ROOT"]."/phpFiles/database/dbConnection.php";
         /*
             es wird durch cart geloopt und nach Unterschieden in der Anzahl gesucht
         */
@@ -259,7 +259,7 @@ class cart{
         /*
             dbConnection
         */
-        include $_SERVER["DOCUMENT_ROOT"]."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER["DOCUMENT_ROOT"]."/phpFiles/database/dbConnection.php";
         /*
             Daten werden aus DB gelöscht
         */
@@ -303,7 +303,7 @@ class cart{
         /*
             dbConnection
         */
-        include $_SERVER["DOCUMENT_ROOT"]."/phpProjects/webshop/phpFiles/database/dbConnection.php";
+        include $_SERVER["DOCUMENT_ROOT"]."/phpFiles/database/dbConnection.php";
         /*
             delete in DB
         */

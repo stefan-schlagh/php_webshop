@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/database/dbConnection.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/phpFiles/database/dbConnection.php"; 
 session_start();
 
 header('Content-Type: application/json; charset=ISO-8859-1');

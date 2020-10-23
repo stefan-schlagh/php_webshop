@@ -2,7 +2,7 @@
 
 include "../../database/dbConnection.php";
 include "../../classes/inputValidation.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/phpProjects/webshop/phpFiles/classes/cart.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/phpFiles/classes/cart.php";
 
 session_start();
 
