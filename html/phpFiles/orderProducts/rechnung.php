@@ -30,7 +30,7 @@ $uid = $_SESSION["userID"];
 
 $date;
 
-$result = $conn->query("SELECT UID, DATE_FORMAT(Datum,'%d.%m.%Y') AS 'Datum' FROM Bestellung WHERE BID = $rnr");
+$result = $conn->query("SELECT UID, DATE_FORMAT(Datum,'%d.%m.%Y') AS 'Datum' FROM bestellung WHERE BID = $rnr") or die ($conn->error);
 if($row = $result->fetch_assoc()){
     if($uid!=$row["UID"]){
         ?>
@@ -203,7 +203,7 @@ $html .= nl2br($rechnungs_footer);
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 // TCPDF Library laden
-require_once('../../../../phpLibs/tcpdf_min/tcpdf.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/vendor/tecnickcom/tcpdf/tcpdf.php');
 
 // Erstellung des PDF Dokuments
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

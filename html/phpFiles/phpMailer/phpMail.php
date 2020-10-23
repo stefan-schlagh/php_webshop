@@ -5,7 +5,7 @@ function phpMail($empfaenger,$betreff,$msg){
     /*
     Requires: https://github.com/PHPMailer/PHPMailer/releases/tag/v5.2.6
     */
-    require_once($_SERVER['DOCUMENT_ROOT'].'/phpLibs/PHPMailer-5.2.6/class.phpmailer.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/vendor/phpmailer/phpmailer/PHPMailer.php');
 
     $mail = new PHPMailer(); // create a new object
     $mail->IsSMTP(); // enable SMTP
