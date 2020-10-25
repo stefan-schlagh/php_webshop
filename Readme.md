@@ -1,5 +1,12 @@
 # php Webshop
 
+## install dependencies
+
+````shell
+sh installDepemdencies.sh
+````
+does not work on Windows
+
 ## start
 
 * install docker and docker-compose
