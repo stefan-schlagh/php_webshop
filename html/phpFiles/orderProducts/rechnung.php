@@ -5,6 +5,8 @@
 */
 session_start();
 
+require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+
 if(!isset($_GET["rnr"])){
     ?>
         <h1>404: File not Found</h1>
@@ -201,9 +203,6 @@ $html .= nl2br($rechnungs_footer);
 
 
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-// TCPDF Library laden
-require_once($_SERVER['DOCUMENT_ROOT'].'/vendor/tecnickcom/tcpdf/tcpdf.php');
 
 // Erstellung des PDF Dokuments
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
