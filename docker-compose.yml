@@ -18,14 +18,14 @@ services:
     #command: copy -r /var/composer/vendor /var/www/html/vendor
     #command: sh /var/initPhp.sh
   mariadb:
-    image: mariadb:10.4
+    image: yobasystems/alpine-mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: webshop
     volumes:
+      #- ./mysql-dump/:/docker-entrypoint-initdb.d
       - mysql-data:/var/lib/mysql
-      - ./mysql-dump:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest

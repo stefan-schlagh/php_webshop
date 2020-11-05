@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 22. Okt 2020 um 08:43
--- Server-Version: 10.4.6-MariaDB
--- PHP-Version: 7.1.32
+-- Host: mariadb
+-- Erstellungszeit: 05. Nov 2020 um 08:50
+-- Server-Version: 10.4.15-MariaDB
+-- PHP-Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `webshoptest`
+-- Datenbank: `webshop`
 --
 
 DELIMITER $$
@@ -398,7 +397,7 @@ CREATE TABLE `bestellposition` (
   `BID` int(11) NOT NULL,
   `PID` int(11) NOT NULL,
   `Menge` int(11) NOT NULL,
-  `PName` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `PName` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PPreis` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
@@ -562,7 +561,8 @@ INSERT INTO `bestellposition` (`BPID`, `BID`, `PID`, `Menge`, `PName`, `PPreis`)
 (158, 58, 43, 1, 'Bacardi', 11.5),
 (159, 58, 35, 1, 'Brot2', 2),
 (160, 58, 36, 2, 'Wurst', 1.15),
-(161, 59, 39, 1, 'JavaUltraIDE', 129.99);
+(161, 59, 39, 1, 'JavaUltraIDE', 129.99),
+(162, 60, 43, 1, 'Bacardi', 11.5);
 
 -- --------------------------------------------------------
 
@@ -637,7 +637,8 @@ INSERT INTO `bestellung` (`BID`, `UID`, `Datum`, `Uhrzeit`) VALUES
 (56, 39, '2020-03-25', '16:12:51'),
 (57, 39, '2020-03-25', '16:26:03'),
 (58, 6, '2020-03-25', '18:21:24'),
-(59, 6, '2020-06-24', '11:57:16');
+(59, 6, '2020-06-24', '11:57:16'),
+(60, 6, '2020-11-05', '08:46:30');
 
 -- --------------------------------------------------------
 
@@ -690,7 +691,7 @@ INSERT INTO `cart` (`CIID`, `CID`, `PID`, `Num`) VALUES
 
 CREATE TABLE `category` (
   `CID` int(11) NOT NULL,
-  `Name` varchar(255) COLLATE utf8_german2_ci NOT NULL
+  `Name` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 --
@@ -983,17 +984,17 @@ INSERT INTO `countries` (`code`, `en`, `de`, `es`, `fr`, `it`, `ru`) VALUES
 
 CREATE TABLE `notverifieduser` (
   `UID` int(11) NOT NULL,
-  `Username` varchar(255) COLLATE utf8_german2_ci NOT NULL,
-  `Vorname` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Nachname` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8_german2_ci NOT NULL,
-  `EMail` varchar(255) COLLATE utf8_german2_ci NOT NULL,
-  `Land` varchar(10) COLLATE utf8_german2_ci NOT NULL,
-  `Ort` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Password` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `EMail` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Land` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PLZ` int(11) NOT NULL,
-  `Strasse` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL,
   `HausNr` int(11) NOT NULL,
-  `verificationCode` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `verificationCode` varchar(255) CHARACTER SET utf8 NOT NULL,
   `creationDate` date NOT NULL,
   `creationTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
@@ -1119,7 +1120,7 @@ INSERT INTO `notverifieduser` (`UID`, `Username`, `Vorname`, `Nachname`, `Passwo
 
 CREATE TABLE `productimage` (
   `PIID` int(11) NOT NULL,
-  `path` varchar(255) COLLATE utf8_german2_ci NOT NULL
+  `path` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 --
@@ -1151,12 +1152,12 @@ INSERT INTO `productimage` (`PIID`, `path`) VALUES
 
 CREATE TABLE `produkt` (
   `PID` int(11) NOT NULL,
-  `Bez` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Bez` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Preis` double NOT NULL,
   `Gewicht` double NOT NULL,
-  `Volumen` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Beschreibung` varchar(10000) COLLATE utf8_german2_ci DEFAULT NULL,
-  `ImgSource` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Volumen` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Beschreibung` varchar(10000) CHARACTER SET utf8 DEFAULT NULL,
+  `ImgSource` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PIID` int(11) NOT NULL,
   `CID` int(11) NOT NULL,
   `SCID` int(11) NOT NULL,
@@ -1212,7 +1213,7 @@ CREATE TABLE `review` (
   `PID` int(11) NOT NULL,
   `UID` int(11) NOT NULL,
   `Rating` int(11) NOT NULL,
-  `ReviewText` varchar(4000) COLLATE utf8_german2_ci NOT NULL,
+  `ReviewText` varchar(4000) CHARACTER SET utf8 NOT NULL,
   `ReviewDate` date NOT NULL,
   `ReviewTime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
@@ -1294,7 +1295,7 @@ INSERT INTO `review` (`RID`, `PID`, `UID`, `Rating`, `ReviewText`, `ReviewDate`,
 CREATE TABLE `subcategory` (
   `SCID` int(11) NOT NULL,
   `CID` int(11) NOT NULL,
-  `Name` varchar(255) COLLATE utf8_german2_ci NOT NULL
+  `Name` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 --
@@ -1322,16 +1323,16 @@ INSERT INTO `subcategory` (`SCID`, `CID`, `Name`) VALUES
 
 CREATE TABLE `user` (
   `UID` int(11) NOT NULL,
-  `Username` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Vorname` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Nachname` varchar(30) COLLATE utf8_german2_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8_german2_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8_german2_ci NOT NULL,
-  `PasswortResetCode` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Password` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Email` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `PasswortResetCode` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Land` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `Ort` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PLZ` int(11) NOT NULL,
-  `Strasse` varchar(255) COLLATE utf8_german2_ci NOT NULL,
+  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL,
   `HausNr` int(11) NOT NULL,
   `creationDate` date NOT NULL,
   `creationTime` time NOT NULL,
@@ -1343,7 +1344,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UID`, `Username`, `Vorname`, `Nachname`, `Password`, `Email`, `PasswortResetCode`, `Land`, `Ort`, `PLZ`, `Strasse`, `HausNr`, `creationDate`, `creationTime`, `cartId`) VALUES
-(6, 'user1', 'Stefan', 'Schlaghuber', '$2y$12$LIY6BaIQxefgKsTGz70i0.RjaoNok/Fbat9nHc5UMedCaAtieM8Pm', 'stefanjkf.test@gmail.com', '432b2014dcff2daeba8574d374579cb2', 'AT', 'Ringendorf', 2002, 'Hausnummer', 45, '0000-00-00', '00:00:00', 20),
+(6, 'user1', 'Stefan', 'Schlaghuber', '$2y$12$LIY6BaIQxefgKsTGz70i0.RjaoNok/Fbat9nHc5UMedCaAtieM8Pm', 'stefanjkf.test@gmail.com', 'd030be3a6e17adc2181a598f274e1786', 'AT', 'Ringendorf', 2002, 'Hausnummer', 45, '0000-00-00', '00:00:00', 20),
 (7, 'stefan', '', '', '$2y$12$KQ0gVD3deB4uoDVe62KlKORPRKdKgfKAuOt/lB6SCiwdLEw9fbeq.', 'stefanjkf.test@gmail.com', 'b8178049cf9f7ea19950263a57b5d9ca', '', '', 0, '', 0, '0000-00-00', '00:00:00', NULL),
 (8, 'david', '', '', '$2y$12$ZuMmiK88f.LkjcPu.5jJjO/wH2PNZId1mRB1EUcbQEEDVFar2GucK', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', NULL),
 (9, 'Prager', '', '', '$2y$12$42yDug4Hqy8roGaYlL2UIepOeqo4dwxInsmyJk6ZYZxOw.ibaNaZG', 'stefanjkf.test@gmail.com', '', '', 'Musterdorf', 2000, 'Musterstrasse', 500, '0000-00-00', '00:00:00', NULL),
@@ -1361,13 +1362,6 @@ INSERT INTO `user` (`UID`, `Username`, `Vorname`, `Nachname`, `Password`, `Email
 (21, 'uazdgagdkhjgakjd', '', '', '$2y$12$vVbRRV.fRgFp0h0KG7NSs.z/IAd7bwu1Wd9709m1D3eyzL81EHRmC', 'stefanjkf.test@gmail.com', '', 'AS', 'zgtatuiatiuztud', 123, 'wfdasfad', 123, '2019-12-29', '13:23:39', NULL),
 (22, 'prager1', '', '', '$2y$12$1fafLKqOAg3OHFe3lGTzD.hN2l82iJpo6TVYahUhbklyFxbYPz17y', 'stefanjkf.test@gmail.com', '', 'AT', 'Musterort', 5587, 'Musterstrasse', 21, '2020-01-08', '11:33:54', NULL),
 (23, 'teset', '', '', '$2y$12$iuMSTkDfF6uCuAC1bwFxguJdEkWerCxVu2LdEew1ttNcBvOqledNe', 'stefanjkf.test@gmail.com', '1b77b965ff77122220125dfd4c9d80e7', 'AD', 'tzut', 123, 'wefwe', 1231, '2020-01-21', '11:11:50', NULL),
-(24, 'prager_', '', '', '$2y$12$GsY60D9H15pFeLsUL74rxuUE1yRFI86pOvmwe9fGWNwMW4Fj40Une', 'prager.maximilian@gmx.at', '', 'AT', 'Hollabrunn', 3701, 'Winzerstrasse', 28, '2020-02-19', '12:42:04', NULL),
-(25, 'David Niedermayer', '', '', '$2y$12$IPJPD/8.uppkpstwGd4cUeGiiX/nYmzab1b96i0XQQhqbGBlTHBWC', 'davidniedermayer00@gmail.com', '', 'AT', 'Wullersdorf', 2041, 'Hetzmannsdorf', 51, '2020-02-19', '13:15:02', NULL),
-(26, 'Herbie', '', '', '$2y$12$h6wh.y0JE/bETGrrt6c6lOV1LCflWKirkagswZS/Bqbvw08Pw3yd.', 'matthi.zeindler@gmail.com', '', 'AT', 'Unterretzbach', 2074, 'Feldgasse', 27, '2020-02-21', '12:17:22', NULL),
-(27, 'hkhgkhjg', '', '', '$2y$12$6kLlK48uOTwN8jZVEFQzre7zmRMk0j0KRVURUOHcCMjibE6P6x70O', 'stefanjkf.test@gmail.com', '', 'AF', 'abc', 123, 'def', 456, '2020-02-25', '08:34:30', NULL),
-(28, 'prager_maximilian', '', '', '$2y$12$3uwzHu1MUbuE9WFassxWP.ugO2/ASlO9gACmHMIAIRPwFTsfj/uia', 'prager.maximilian@gmx.at', '', 'AT', 'Grossweikersdorf', 3701, 'Winzerstrasse', 28, '2020-02-28', '12:34:01', NULL),
-(29, 'ich2', '', '', '$2y$12$Hs7Fx2NKsgWpE3JzxUI.v.V3.5oK9XXpYJBVrQ4wVK1F6TqY5vUGS', 'johann.schlaghuber@gmail.com', '', 'DE', 'ja', 123, 'Nr', 1, '2020-03-01', '20:10:27', NULL),
-(30, 'naqib', '', '', '$2y$12$qq5H.Ekva7syYoKICK5x9u3X8bVj/YeJQtJM6RvoR7U.SYT0tgssC', 'naqibamini96@gmail.com', '', 'AF', 'Kabul', 2330, 'Parwane sea', 2, '2020-03-02', '09:17:42', NULL),
 (31, 'waslmeier', '', '', '$2y$12$JE1RbXoLfT4wIj8VJXwyH.AYK0fr/3Ly6m8/pxNHmNOtWc4h0Mr3W', 'mw5waslmeier@gmail.com', '', 'IR', 'fbdg', 3456, '37', 23456, '2020-03-02', '09:19:21', NULL),
 (32, 'abcdefgabc', '', '', '$2y$12$X3Y2NdNoXdhrX7UG.6W8PeCLWuL8vZNiDTNPuJhmBgFKopekIq1MC', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', 11),
 (33, 'kjahgd', '', '', '$2y$12$6tF8w09T26.z2PZ./8QNDe86Eyp7LymmmX6vp1Y49Lya5aaAuOrSC', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', NULL),
@@ -1458,19 +1452,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `bestellposition`
 --
 ALTER TABLE `bestellposition`
-  MODIFY `BPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `BPID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT für Tabelle `bestellung`
 --
 ALTER TABLE `bestellung`
-  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT für Tabelle `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CIID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'cartitem-id', AUTO_INCREMENT=74;
+  MODIFY `CIID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'cartitem-id', AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT für Tabelle `category`

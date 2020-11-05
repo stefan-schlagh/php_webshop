@@ -38,7 +38,7 @@ $conn->query("SET @p2 = '$siteSize'");
 $conn->query("SET @p3 = '[]'");//catlist
 $conn->query("SET @p4 = '[]'");//subcatlist
 
-$result = $conn->query("CALL `selectProducts1`(@p0)");
+$result = $conn->query("CALL `selectProducts1`(@p0)") or die($conn->error);
 $resultCount = $result -> num_rows;
 $result->close();
 $conn->next_result();

@@ -61,7 +61,7 @@ class cart{
         /*
             max cid wird aus DB selected
         */
-        $result = $conn->query("SELECT max(CID) AS 'cid' FROM cart");
+        $result = $conn->query("SELECT max(CID) AS 'cid' FROM cart") or die($conn->error);
         if($row=$result->fetch_assoc()){
             /*
                 erste unbenutze cid (max+1) wird genommen
