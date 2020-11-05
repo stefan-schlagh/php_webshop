@@ -1,11 +1,11 @@
 version: "3.7"
 services:
   nginx-proxy:
-    build:
-      dockerfile: nginx.Dockerfile
-      context: .
+    image: nginx:alpine
     ports: 
       - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
   web-server:
     build:
       dockerfile: php.Dockerfile
@@ -15,8 +15,6 @@ services:
       - "./html/:/var/www/html/"
     ports:
       - "8080:80"
-    #command: copy -r /var/composer/vendor /var/www/html/vendor
-    #command: sh /var/initPhp.sh
   mariadb:
     image: yobasystems/alpine-mariadb
     restart: always
@@ -34,8 +32,6 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mariadb
-      #PMA_USER: root
-      #PMA_PASSWORD: secret
     depends_on:
       - mariadb
 volumes:
