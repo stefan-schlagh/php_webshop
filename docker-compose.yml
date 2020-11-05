@@ -28,7 +28,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: jackgruber/phpmyadmin
     ports:
       - "5000:80"
     environment:
