@@ -1,3 +1,4 @@
 *.txt
 .env
 /html/vendor/*
+/docker-nginx-certbot
