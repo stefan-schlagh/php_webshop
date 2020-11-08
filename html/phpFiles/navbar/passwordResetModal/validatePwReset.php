@@ -43,9 +43,7 @@ if(isset($_POST["username"])&&isset($_POST["email"])){
             $empfaenger=$email->getContent();
             $betreff="passwordreset";
 
-            require_once("../../getExternalIP.php");
-
-            $msg="http://".getExternalIP()."/webshop/enternewPW.php?UID=$uid&rc=$resetCode";
+            $msg="https://webshop.schlagh.com/enternewPW.php?UID=$uid&rc=$resetCode";
             /*
              * mail wird gesendet
              */

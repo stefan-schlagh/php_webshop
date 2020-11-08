@@ -44,9 +44,7 @@ if(isset($_POST["email"])&&isset($_POST["land"])&&isset($_POST["ort"])&&isset($_
     $empfaenger=$email;
     $betreff="verification";
 
-    require_once("../../getExternalIP.php");
-
-    $msg="http://".getExternalIP()."/webshop/verifyUser.php?UID=$uid&vc=$verificationCode";
+    $msg="https://webshop.schlagh.com/verifyUser.php?UID=$uid&vc=$verificationCode";
     /*
         * mail wird gesendet
     */
