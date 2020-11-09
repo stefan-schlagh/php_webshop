@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Erstellungszeit: 05. Nov 2020 um 08:50
+-- Erstellungszeit: 09. Nov 2020 um 14:18
 -- Server-Version: 10.4.15-MariaDB
--- PHP-Version: 7.4.11
+-- PHP-Version: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -984,19 +984,19 @@ INSERT INTO `countries` (`code`, `en`, `de`, `es`, `fr`, `it`, `ru`) VALUES
 
 CREATE TABLE `notverifieduser` (
   `UID` int(11) NOT NULL,
-  `Username` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Username` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `Password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `EMail` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `Land` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `PLZ` int(11) NOT NULL,
-  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `HausNr` int(11) NOT NULL,
-  `verificationCode` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `creationDate` date NOT NULL,
-  `creationTime` time NOT NULL
+  `Land` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `PLZ` int(11) NOT NULL DEFAULT 0,
+  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `HausNr` int(11) NOT NULL DEFAULT 0,
+  `verificationCode` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `creationDate` date DEFAULT NULL,
+  `creationTime` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 --
@@ -1109,8 +1109,7 @@ INSERT INTO `notverifieduser` (`UID`, `Username`, `Vorname`, `Nachname`, `Passwo
 (167, 'sdflhajkdsf', '', '', '$2y$12$5TWL1uweoAhSMZU.xQSZa.iUg1/go18WpPe33x/S6Wik.T7/plP1G', 'stefanjkf.test@gmail.com', '', '', 0, '', 0, '', '2020-03-23', '17:52:03'),
 (168, 'hasljkdfha', '', '', '$2y$12$7heT.91JclEV0j1VA5HZMOrfIXZmbEWQN4qS6ascl67wnLq8KGcJS', 'stefanjkf.test@gmail.com', '', '', 0, '', 0, '', '2020-03-24', '17:50:48'),
 (169, 'asdfa', 'adfadsadf', 'asdasda', '$2y$12$54Lk31RN/Fe8dP7BH5fkyeTMPton4VJYksz0/8aCuJNulxR916qZy', 'stefanjkf.test@gmail.com', '', '', 0, '', 0, '', '2020-03-24', '17:52:44'),
-(170, 'sfsdfsdfsd', 'asdasda', 'asdasd', '$2y$12$txBKp8ZRQrEVHcPcRH303O8RNKb3duPMODGZvACfuvhyf7HMtgLcW', 'stefanjkf.test@gmail.com', '', '', 0, '', 0, '', '2020-03-24', '17:56:48'),
-(171, 'asasdasd', 'asdasd', 'adsasd', '$2y$12$YTFANMtH5Ki5xhCarlrYIOoevfJLhWJeKYGGKxs3njni689xQtAoq', 'stefanjkf.test@gmail.com', '$land', '$ort', 5, '$street', 5, '$verificationCode', '2020-03-24', '17:58:20');
+(170, 'sfsdfsdfsd', 'asdasda', 'asdasd', '$2y$12$txBKp8ZRQrEVHcPcRH303O8RNKb3duPMODGZvACfuvhyf7HMtgLcW', 'stefanjkf.test@gmail.com', '', '', 0, '', 0, '', '2020-03-24', '17:56:48');
 
 -- --------------------------------------------------------
 
@@ -1324,18 +1323,18 @@ INSERT INTO `subcategory` (`SCID`, `CID`, `Name`) VALUES
 CREATE TABLE `user` (
   `UID` int(11) NOT NULL,
   `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Vorname` varchar(30) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `Nachname` varchar(30) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `Password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Email` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `PasswortResetCode` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `Land` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `PLZ` int(11) NOT NULL,
-  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `HausNr` int(11) NOT NULL,
-  `creationDate` date NOT NULL,
-  `creationTime` time NOT NULL,
+  `PasswortResetCode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Land` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `Ort` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `PLZ` int(11) NOT NULL DEFAULT 0,
+  `Strasse` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `HausNr` int(11) NOT NULL DEFAULT 0,
+  `creationDate` date DEFAULT NULL,
+  `creationTime` time DEFAULT NULL,
   `cartId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
@@ -1369,8 +1368,7 @@ INSERT INTO `user` (`UID`, `Username`, `Vorname`, `Nachname`, `Password`, `Email
 (35, 'adsfadfsadasd', 'sfgsdfgsf', 'adsaa', '$2y$12$9hm6bCWeV9JuqtQ2HaAk4ugaQS9.QdeVGK.ui74Zpadxm.0hMC.0O', 'stefanjkf.test@gmail.com', '', 'AX', '', 0, '', 0, '2020-03-24', '18:01:52', NULL),
 (36, 'regina75', 'Regina', 'Schlags', '$2y$12$0sO4H/PRMeLydycT5ajLQeJ8yw.XaeJwkB7s67PSuebZwExGYUJrK', '', '', 'AT', 'Ringendorf', 2002, 'Hausnummer', 45, '0000-00-00', '00:00:00', 0),
 (37, 'hjkhasjkdhaksdh', '', '', '$2y$12$kbM37Qjgq7gV.w29I9j0A.b5YDAG.Beu2.Vg.4BqS012B9zlQbOy.', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', 18),
-(38, 'sdfsdf', '', '', '$2y$12$oQk1sMn21Wx8EidgLy13q.3y6eKnNTWPfzh32Jlap4K9oHeH/abrW', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', 19),
-(39, 'abcdefgh', 'abcd', 'abcd', '$2y$12$50X/dk1y.lLISeMKrxeAZe2IQuXAArKGgWKaCDq3st2fWxEEMRD6W', '', '', 'AX', 'abcd', 1234, 'abcd', 123, '0000-00-00', '00:00:00', 0);
+(38, 'sdfsdf', '', '', '$2y$12$oQk1sMn21Wx8EidgLy13q.3y6eKnNTWPfzh32Jlap4K9oHeH/abrW', '', '', '', '', 0, '', 0, '0000-00-00', '00:00:00', 19);
 
 --
 -- Indizes der exportierten Tabellen
@@ -1476,7 +1474,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT für Tabelle `notverifieduser`
 --
 ALTER TABLE `notverifieduser`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT für Tabelle `productimage`
@@ -1506,7 +1504,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

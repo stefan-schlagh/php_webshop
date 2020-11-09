@@ -14,6 +14,8 @@ if(isset($_POST["email"])&&isset($_POST["land"])&&isset($_POST["ort"])&&isset($_
     $email = $_POST["email"];
 
     $land = $_POST["land"];
+    if($land == "Select country")
+        $land="";
 
     $ort = $_POST["ort"];
 

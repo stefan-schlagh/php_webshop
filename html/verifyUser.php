@@ -19,11 +19,12 @@ $successcode=1;
  * 2...error
  * */
 
-if(isset($_GET["UID"])&&isset($_GET["vc"])&&validateInteger($_GET["UID"])){
+if(isset($_GET["UID"]) &&isset($_GET["vc"]) && is_numeric($_GET["UID"])){
     $UID=$_GET["UID"];
-    $sql="SELECT verificationCode AS vc FROM notverifieduser WHERE UID = $UID";
-    $result=mysqli_query($conn,$sql);
-    if($row=$result->fetch_assoc()){
+    $sql="SELECT verificationCode AS 'vc' FROM notverifieduser WHERE UID = $UID";
+    $result = $conn->query($sql) or die($conn->error);
+    $row = $result->fetch_assoc() or die("Error".$conn->error);
+    if($row){
         if($row["vc"]==$_GET["vc"]){
             /**
              * Datensatz verschieben
@@ -38,7 +39,6 @@ if(isset($_GET["UID"])&&isset($_GET["vc"])&&validateInteger($_GET["UID"])){
         }
     }else{
         $successcode=2;
-        $x=1;
     }
 }else{
     $successcode=2;
